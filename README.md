@@ -1,19 +1,19 @@
-Python Crypter
+Optimus Crypter
 =======
-Uses AES to run encrypted shellcode using Python and ctypes
+Utilise AES pour exécuter un shellcode crypté en utilisant Python et ctypes.
 
 `CodeSection.py` 
-Contains encrypted shellcode (encrypted by ShellcodeEncrypter.py) and the ctypes functions neccessary to execute it. It gets detected in AV if not encrypted by...
+Contient le shellcode crypté (crypté par ShellcodeEncrypter.py) et les fonctions ctypes nécessaires pour l'exécuter. Il est détecté par l'antivirus s'il n'est pas crypté par...
 
 `EncryptCodeSection.py`
-Calls an encryptFile funtion (in crypt.py) that drops the "CodeSection" file. This file is encrypted and not detected by AV.
+Appelle une fonction encryptFile (dans crypt.py) qui dépose le fichier "CodeSection". Ce fichier est crypté et n'est pas détecté par l'AV.
 
 `ShellcodeEncrypter.py`
-Used to encrypt shellcode. Not exactly neccessary, but useful if you're paranoid about static analysis.
+Utilisé pour crypter le shellcode. Pas vraiment nécessaire, mais utile si vous êtes paranoïaque à propos de l'analyse statique.
 
 `stub.py`
-Decrypts "CodeSection" and runs the returned file in memory. 
+Décrypte le "CodeSection" et exécute le fichier retourné en mémoire. 
 
-This can all be packed into an executable with PyInstaller. Be warned that this is scan-time undetectable, NOT run-time undetectable. The current shellcode in the scripts runs calc.exe. Feel free to change it to whatever you want.
+Tout ceci peut être empaqueté dans un exécutable avec PyInstaller. Soyez avertis que ceci est indétectable au moment du scan, PAS au moment de l'exécution. Le shellcode actuel dans les scripts exécute calc.exe. N'hésitez pas à le changer pour ce que vous voulez.
 
-NOTE: This is just a PoC, the crypto functions use a static string with a random value that is embedded in the shellcode. 
+NOTE : C'est juste un PoC, les fonctions cryptographiques utilisent une chaîne statique avec une valeur aléatoire qui est intégrée dans le shellcode. 
